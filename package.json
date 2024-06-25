@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "node generateGraphData.js && docusaurus start",
+    "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -21,6 +21,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mdx-js/react": "^3.0.0",
+    "@mui/icons-material": "^5.15.20",
     "@mui/material": "^5.15.20",
     "clsx": "^2.0.0",
     "markdown-it": "^14.1.0",
@@ -30,7 +31,12 @@
     "react-dom": "^18.0.0",
     "react-graph-vis": "^1.0.7",
     "remark": "^15.0.1",
-    "remark-mdx": "^3.0.1"
+    "remark-mdx": "^3.0.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.4.0",

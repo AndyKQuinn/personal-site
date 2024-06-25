@@ -8,18 +8,22 @@ const docsDir = path.join(__dirname, 'docs');
 // Define a color mapping for tags and titles
 const colorMap = {
   'lightblue': ['title'],
-  'pink': ['tag1', 'tag4'],
-  'lightgreen': ['tag2', 'tag5'],
-  'purple': ['tag3'],
+  'red': ['Agile'],
+  'green': ['SCM'],
+  'purple': ['Docker'],
   'default': ['lightgray'] // Default color for tags not explicitly listed
 };
 
+// Define a group mapping for groups
 const groupMap = {
-  'CI/CD': 'diamonds',
-  'group2': 'dotsWithLabel',
-  'group3': 'mints',
-  'group4': 'icons',
-  'default': 'icons' // Default group for values not explicitly listed
+  'persons': ['CI/CD'],
+  'favorites': ['Source Control'],
+  'stars': ['Agile'],
+  'checks': ['SCM'],
+  'searches': [''],
+  'comments': [''],
+  'thumbsUp': ['Documentation'],
+  'default': ['closes'] // Default group for values not explicitly listed
 };
 
 function getColorForTag(tag) {
@@ -29,6 +33,15 @@ function getColorForTag(tag) {
     }
   }
   return colorMap['default'][0];
+}
+
+function getGroupForValue(group) {
+  for (const grp in groupMap) {
+    if (groupMap[grp].includes(group)) {
+      return grp;
+    }
+  }
+  return groupMap['default'][0];
 }
 
 function getMarkdownFiles(dir) {
@@ -47,10 +60,6 @@ function getMarkdownFiles(dir) {
   return markdownFiles;
 }
 
-function getGroupForValue(group) {
-  return groupMap[group] || groupMap['default'];
-}
-
 function parseMarkdownFiles(files) {
   let parsedFiles = [];
 
@@ -58,6 +67,7 @@ function parseMarkdownFiles(files) {
     let content = fs.readFileSync(file, 'utf8');
     let parsed = matter(content);
 
+    // Extract title from front matter or markdown content
     let title = parsed.data && parsed.data.title ? parsed.data.title : '';
     if (!title) {
       const tokens = marked.lexer(content);
@@ -90,9 +100,10 @@ function generateGraphData() {
   let titleNodeMap = new Map();
   let tagNodeMap = new Map();
 
+  // Create nodes for titles and tags
   parsedFiles.forEach((file) => {
     const titleColor = getColorForTag('title');
-    const titleNode = { id: nodeId, label: file.title, title: file.title, url: file.url, color: { background: titleColor } };
+    const titleNode = { id: nodeId, label: file.title, title: file.title, url: file.url, color: { background: titleColor }, group: file.group };
     nodes.push(titleNode);
     titleNodeMap.set(file.title, nodeId);
     nodeId++;
@@ -100,7 +111,7 @@ function generateGraphData() {
     file.tags.forEach((tag) => {
       if (!tagNodeMap.has(tag)) {
         const tagColor = getColorForTag(tag);
-        const tagNode = { id: nodeId, label: tag, title: tag, color: { background: tagColor } };
+        const tagNode = { id: nodeId, label: tag, title: tag, color: { background: tagColor }, group: getGroupForValue('default') };
         nodes.push(tagNode);
         tagNodeMap.set(tag, nodeId);
         nodeId++;

@@ -1,7 +1,8 @@
 ---
-title: Static Site
-tags: ["windows", "linux"]
+tags: ["docusaurus"]
 ---
+
+# Build a Static Site
 
 Static site generators are tools that generate static HTML files from a source of content. They are often used to create a website that is hosted on a server, such as GitHub Pages or Netlify.
 

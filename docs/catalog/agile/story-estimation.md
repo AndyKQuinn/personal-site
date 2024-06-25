@@ -1,6 +1,7 @@
 ---
 title: Story Estimation
-tags: ["agile", "scrumlord", "backlog", "refinement", "estimation"]
+tags: ['Agile']
+group: 'Agile'
 ---
 
 Story estimation is a key concept in agile software development. It refers to the process of estimating the effort required to complete a user story, which is a high-level description of a feature or functionality. This involves using techniques such as story points, velocity, and burndown charts to estimate the time and effort required to complete a user story.

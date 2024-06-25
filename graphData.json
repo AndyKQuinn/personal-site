@@ -2,212 +2,166 @@
   "nodes": [
     {
       "id": 1,
-      "label": "Static Site",
-      "title": "Static Site",
+      "label": "Build a Static Site",
+      "title": "Build a Static Site",
       "url": "/docs/capabilities/static-site",
       "color": {
         "background": "lightblue"
-      }
+      },
+      "group": "closes"
     },
     {
       "id": 2,
-      "label": "windows",
-      "title": "windows",
+      "label": "docusaurus",
+      "title": "docusaurus",
       "color": {
-        "background": "orange"
-      }
+        "background": "lightgray"
+      },
+      "group": "closes"
     },
     {
       "id": 3,
-      "label": "linux",
-      "title": "linux",
-      "color": {
-        "background": "orange"
-      }
-    },
-    {
-      "id": 4,
       "label": "Product Ownership",
       "title": "Product Ownership",
       "url": "/docs/catalog/agile/product-ownership",
       "color": {
         "background": "lightblue"
-      }
+      },
+      "group": "stars"
+    },
+    {
+      "id": 4,
+      "label": "Agile",
+      "title": "Agile",
+      "color": {
+        "background": "red"
+      },
+      "group": "closes"
     },
     {
       "id": 5,
-      "label": "agile",
-      "title": "agile",
-      "color": {
-        "background": "orange"
-      }
-    },
-    {
-      "id": 6,
-      "label": "scrumlord",
-      "title": "scrumlord",
-      "color": {
-        "background": "orange"
-      }
-    },
-    {
-      "id": 7,
-      "label": "qpp",
-      "title": "qpp",
-      "color": {
-        "background": "orange"
-      }
-    },
-    {
-      "id": 8,
       "label": "Story Estimation",
       "title": "Story Estimation",
       "url": "/docs/catalog/agile/story-estimation",
       "color": {
         "background": "lightblue"
-      }
+      },
+      "group": "stars"
     },
     {
-      "id": 9,
-      "label": "backlog",
-      "title": "backlog",
-      "color": {
-        "background": "orange"
-      }
-    },
-    {
-      "id": 10,
-      "label": "refinement",
-      "title": "refinement",
-      "color": {
-        "background": "orange"
-      }
-    },
-    {
-      "id": 11,
-      "label": "estimation",
-      "title": "estimation",
-      "color": {
-        "background": "orange"
-      }
-    },
-    {
-      "id": 12,
+      "id": 6,
       "label": "Build Image",
       "title": "Build Image",
       "url": "/docs/catalog/ci_cd/build-image",
       "color": {
         "background": "lightblue"
-      }
+      },
+      "group": "persons"
     },
     {
-      "id": 13,
-      "label": "k8s",
-      "title": "k8s",
+      "id": 7,
+      "label": "Docker",
+      "title": "Docker",
       "color": {
-        "background": "orange"
-      }
+        "background": "purple"
+      },
+      "group": "closes"
     },
     {
-      "id": 14,
-      "label": "continuous integration",
-      "title": "continuous integration",
-      "color": {
-        "background": "orange"
-      }
-    },
-    {
-      "id": 15,
+      "id": 8,
       "label": "Deploy Image",
       "title": "Deploy Image",
       "url": "/docs/catalog/ci_cd/deploy-image",
       "color": {
         "background": "lightblue"
-      }
+      },
+      "group": "persons"
     },
     {
-      "id": 16,
+      "id": 9,
       "label": "Security Scans",
       "title": "Security Scans",
       "url": "/docs/catalog/ci_cd/security-scans",
       "color": {
         "background": "lightblue"
-      }
+      },
+      "group": "persons"
     },
     {
-      "id": 17,
-      "label": "security",
-      "title": "security",
+      "id": 10,
+      "label": "Vulnerability Scanning",
+      "title": "Vulnerability Scanning",
       "color": {
-        "background": "orange"
-      }
+        "background": "lightgray"
+      },
+      "group": "closes"
     },
     {
-      "id": 18,
-      "label": "vulnerability",
-      "title": "vulnerability",
+      "id": 11,
+      "label": "Good Docs",
+      "title": "Good Docs",
+      "url": "/docs/catalog/documentation/good-docs",
       "color": {
-        "background": "orange"
-      }
+        "background": "lightblue"
+      },
+      "group": "thumbsUp"
     },
     {
-      "id": 19,
-      "label": "scan",
-      "title": "scan",
+      "id": 12,
+      "label": "Documentation",
+      "title": "Documentation",
       "color": {
-        "background": "orange"
-      }
+        "background": "lightgray"
+      },
+      "group": "closes"
     },
     {
-      "id": 20,
+      "id": 13,
       "label": "GitLab",
       "title": "GitLab",
       "url": "/docs/catalog/source-control/gitlab",
       "color": {
         "background": "lightblue"
-      }
+      },
+      "group": "checks"
     },
     {
-      "id": 21,
-      "label": "woo",
-      "title": "woo",
-      "color": {
-        "background": "orange"
-      }
-    },
-    {
-      "id": 22,
-      "label": "git",
-      "title": "git",
-      "color": {
-        "background": "orange"
-      }
-    },
-    {
-      "id": 23,
+      "id": 14,
       "label": "Source Control",
       "title": "Source Control",
+      "color": {
+        "background": "lightgray"
+      },
+      "group": "closes"
+    },
+    {
+      "id": 15,
+      "label": "Source Control Management (SCM)",
+      "title": "Source Control Management (SCM)",
       "url": "/docs/catalog/source-control/scm",
       "color": {
         "background": "lightblue"
-      }
+      },
+      "group": "closes"
     },
     {
-      "id": 24,
+      "id": 16,
       "label": "Introduction",
       "title": "Introduction",
       "url": "/docs/intro",
       "color": {
         "background": "lightblue"
-      }
+      },
+      "group": "closes"
     },
     {
-      "id": 25,
+      "id": 17,
       "label": "intro",
       "title": "intro",
       "color": {
-        "background": "orange"
-      }
+        "background": "lightgray"
+      },
+      "group": "closes"
     }
   ],
   "edges": [
@@ -215,182 +169,70 @@
       "from": 1,
       "to": 2,
       "color": {
-        "color": "orange"
+        "color": "lightgray"
       }
     },
     {
-      "from": 1,
-      "to": 3,
+      "from": 3,
+      "to": 4,
       "color": {
-        "color": "orange"
+        "color": "red"
       }
     },
     {
-      "from": 4,
-      "to": 5,
+      "from": 5,
+      "to": 4,
       "color": {
-        "color": "orange"
+        "color": "red"
       }
     },
     {
-      "from": 4,
-      "to": 6,
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 4,
+      "from": 6,
       "to": 7,
       "color": {
-        "color": "orange"
+        "color": "purple"
       }
     },
     {
       "from": 8,
-      "to": 5,
+      "to": 7,
       "color": {
-        "color": "orange"
+        "color": "purple"
       }
     },
     {
-      "from": 8,
-      "to": 6,
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 8,
-      "to": 9,
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 8,
+      "from": 9,
       "to": 10,
       "color": {
-        "color": "orange"
+        "color": "lightgray"
       }
     },
     {
-      "from": 8,
-      "to": 11,
+      "from": 11,
+      "to": 12,
       "color": {
-        "color": "orange"
+        "color": "lightgray"
       }
     },
     {
-      "from": 12,
-      "to": 2,
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 12,
-      "to": 3,
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 12,
-      "to": 13,
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 12,
+      "from": 13,
       "to": 14,
       "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 15,
-      "to": 2,
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 15,
-      "to": 3,
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 15,
-      "to": 13,
-      "color": {
-        "color": "orange"
+        "color": "lightgray"
       }
     },
     {
       "from": 15,
       "to": 14,
       "color": {
-        "color": "orange"
+        "color": "lightgray"
       }
     },
     {
       "from": 16,
       "to": 17,
       "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 16,
-      "to": 18,
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 16,
-      "to": 19,
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 16,
-      "to": 14,
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 20,
-      "to": 21,
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 20,
-      "to": 22,
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 23,
-      "to": 22,
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 24,
-      "to": 25,
-      "color": {
-        "color": "orange"
+        "color": "lightgray"
       }
     }
   ]

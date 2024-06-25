@@ -1,7 +1,8 @@
 ---
-title: Source Control
-tags: ["git"]
+tags: ['Source Control']
 ---
+
+# Source Control Management (SCM)
 
 Source control is a critical component of software development. It allows developers to track changes to their code, collaborate with other developers, and manage the history of their work.
 
