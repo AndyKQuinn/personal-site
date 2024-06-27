@@ -1,6 +1,7 @@
 ---
 title: Product Ownership
-tags: ['Agile']
+tags:
+  - DORA
 group: 'Agile'
 ---
 

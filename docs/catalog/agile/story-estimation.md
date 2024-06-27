@@ -1,6 +1,7 @@
 ---
 title: Story Estimation
-tags: ['Agile']
+tags:
+  - DORA
 group: 'Agile'
 ---
 

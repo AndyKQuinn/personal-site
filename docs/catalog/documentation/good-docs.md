@@ -1,8 +1,12 @@
 ---
-title: Good Docs
+title: Quality Documentation
 tags:
-  - Documentation
-group: Documentation
+  - DORA
+type: Technical
+parent: Knowledge
+personas:
+  - Engineers
+  - Developers
 ---
 
 Good documentation is essential for a project to be successful.
