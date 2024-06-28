@@ -1,364 +1,79 @@
 {
   "nodes": [
     {
-      "id": 1,
-      "label": "Some other thing",
-      "url": "/docs/capabilities/some-other-thing",
-      "color": {},
-      "type": "Recipe",
-      "personas": [
-        "Engineers",
-        "Developers"
-      ],
-      "value": 1
+      "id": "fast-feedback",
+      "group": 1
     },
     {
-      "id": 2,
-      "label": "DORA",
-      "color": {},
-      "value": 1.7000000000000006
+      "id": "fast-flow",
+      "group": 1
     },
     {
-      "id": 3,
-      "label": "Security",
-      "color": {},
-      "value": 1.5000000000000004
+      "id": "learning-climate",
+      "group": 1
     },
     {
-      "id": 4,
-      "label": "Some awesome thing",
-      "url": "/docs/capabilities/something-awesome",
-      "color": {},
-      "type": "Coaching",
-      "personas": [
-        "Leadership",
-        "Developers"
-      ],
-      "value": 1
+      "id": "product-ownership",
+      "group": 2
     },
     {
-      "id": 5,
-      "label": "Build a Static Site",
-      "url": "/docs/capabilities/static-site",
-      "color": {
-        "background": "orange"
-      },
-      "type": "Informational",
-      "personas": [],
-      "value": 1
+      "id": "story-estimation",
+      "group": 2
     },
     {
-      "id": 6,
-      "label": "docusaurus",
-      "color": {
-        "background": "orange"
-      },
-      "value": 1.1
+      "id": "build-image",
+      "group": 3
     },
     {
-      "id": 7,
-      "label": "Yet another awesome thing",
-      "url": "/docs/capabilities/yet-another-thing",
-      "color": {
-        "background": "lightblue"
-      },
-      "type": "Technical",
-      "personas": [
-        "Engineers",
-        "Developers"
-      ],
-      "value": 1
+      "id": "deploy-image",
+      "group": 3
     },
     {
-      "id": 8,
-      "label": "Product Ownership",
-      "url": "/docs/catalog/agile/product-ownership",
-      "color": {
-        "background": "orange"
-      },
-      "type": "Informational",
-      "personas": [],
-      "value": 1
+      "id": "security-scans",
+      "group": 3
     },
     {
-      "id": 9,
-      "label": "Story Estimation",
-      "url": "/docs/catalog/agile/story-estimation",
-      "color": {
-        "background": "orange"
-      },
-      "type": "Informational",
-      "personas": [],
-      "value": 1
+      "id": "good-docs",
+      "group": 4
     },
     {
-      "id": 10,
-      "label": "Build Image",
-      "url": "/docs/catalog/ci_cd/build-image",
-      "color": {
-        "background": "orange"
-      },
-      "type": "Informational",
-      "personas": [],
-      "value": 1
+      "id": "gitlab",
+      "group": 5
     },
     {
-      "id": 11,
-      "label": "Docker",
-      "color": {
-        "background": "orange"
-      },
-      "value": 1.2000000000000002
+      "id": "scm",
+      "group": 5
     },
     {
-      "id": 12,
-      "label": "Deploy Image",
-      "url": "/docs/catalog/ci_cd/deploy-image",
-      "color": {
-        "background": "orange"
-      },
-      "type": "Informational",
-      "personas": [],
-      "value": 1
-    },
-    {
-      "id": 13,
-      "label": "Security Scans",
-      "url": "/docs/catalog/ci_cd/security-scans",
-      "color": {
-        "background": "lightblue"
-      },
-      "type": "Technical",
-      "personas": [
-        "Engineers",
-        "Developers"
-      ],
-      "value": 1
-    },
-    {
-      "id": 14,
-      "label": "Vulnerabilities",
-      "color": {
-        "background": "lightblue"
-      },
-      "value": 1.1
-    },
-    {
-      "id": 15,
-      "label": "Quality Documentation",
-      "url": "/docs/catalog/documentation/good-docs",
-      "color": {
-        "background": "lightblue"
-      },
-      "type": "Technical",
-      "personas": [
-        "Engineers",
-        "Developers"
-      ],
-      "value": 1
-    },
-    {
-      "id": 16,
-      "label": "Knowledge",
-      "color": {
-        "background": "lightblue"
-      },
-      "value": 1.1
-    },
-    {
-      "id": 17,
-      "label": "GitLab",
-      "url": "/docs/catalog/source-control/gitlab",
-      "color": {
-        "background": "orange"
-      },
-      "type": "Informational",
-      "personas": [],
-      "value": 1
-    },
-    {
-      "id": 18,
-      "label": "Source Control",
-      "color": {
-        "background": "orange"
-      },
-      "value": 1.1
-    },
-    {
-      "id": 19,
-      "label": "Source Control Management (SCM)",
-      "url": "/docs/catalog/source-control/scm",
-      "color": {
-        "background": "orange"
-      },
-      "type": "Informational",
-      "personas": [],
-      "value": 1
-    },
-    {
-      "id": 20,
-      "label": "Introduction",
-      "url": "/docs/intro",
-      "color": {
-        "background": "orange"
-      },
-      "type": "Informational",
-      "personas": [],
-      "value": 1
-    },
-    {
-      "id": 21,
-      "label": "intro",
-      "color": {
-        "background": "orange"
-      },
-      "value": 1.1
+      "id": "intro",
+      "group": 6
     }
   ],
-  "edges": [
+  "links": [
     {
-      "from": 1,
-      "to": 2,
-      "arrows": "to, from",
-      "color": {}
+      "source": "fast-feedback",
+      "target": "fast-flow",
+      "value": 3
     },
     {
-      "from": 1,
-      "to": 3,
-      "arrows": "to",
-      "color": {}
+      "source": "fast-feedback",
+      "target": "learning-climate",
+      "value": 3
     },
     {
-      "from": 4,
-      "to": 2,
-      "arrows": "to, from",
-      "color": {}
+      "source": "fast-flow",
+      "target": "learning-climate",
+      "value": 3
     },
     {
-      "from": 4,
-      "to": 3,
-      "arrows": "to",
-      "color": {}
+      "source": "product-ownership",
+      "target": "story-estimation",
+      "value": 2
     },
     {
-      "from": 5,
-      "to": 6,
-      "arrows": "to, from",
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 7,
-      "to": 2,
-      "arrows": "to, from",
-      "color": {
-        "color": "lightblue"
-      }
-    },
-    {
-      "from": 7,
-      "to": 3,
-      "arrows": "to",
-      "color": {
-        "color": "lightblue"
-      }
-    },
-    {
-      "from": 8,
-      "to": 2,
-      "arrows": "to, from",
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 9,
-      "to": 2,
-      "arrows": "to, from",
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 10,
-      "to": 11,
-      "arrows": "to, from",
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 12,
-      "to": 11,
-      "arrows": "to, from",
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 13,
-      "to": 3,
-      "arrows": "to, from",
-      "color": {
-        "color": "lightblue"
-      }
-    },
-    {
-      "from": 13,
-      "to": 14,
-      "arrows": "to, from",
-      "color": {
-        "color": "lightblue"
-      }
-    },
-    {
-      "from": 13,
-      "to": 3,
-      "arrows": "to",
-      "color": {
-        "color": "lightblue"
-      }
-    },
-    {
-      "from": 15,
-      "to": 2,
-      "arrows": "to, from",
-      "color": {
-        "color": "lightblue"
-      }
-    },
-    {
-      "from": 15,
-      "to": 16,
-      "arrows": "to",
-      "color": {
-        "color": "lightblue"
-      }
-    },
-    {
-      "from": 17,
-      "to": 18,
-      "arrows": "to, from",
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 19,
-      "to": 2,
-      "arrows": "to, from",
-      "color": {
-        "color": "orange"
-      }
-    },
-    {
-      "from": 20,
-      "to": 21,
-      "arrows": "to, from",
-      "color": {
-        "color": "orange"
-      }
+      "source": "build-image",
+      "target": "deploy-image",
+      "value": 2
     }
   ]
 }

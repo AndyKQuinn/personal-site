@@ -1,5 +1,6 @@
 ---
-tags: ["docusaurus"]
+tags:
+  - DORA
 ---
 
 # Build a Static Site

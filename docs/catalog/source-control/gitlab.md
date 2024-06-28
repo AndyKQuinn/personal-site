@@ -1,8 +1,9 @@
 ---
-title: GitLab
-tags: ['Source Control']
-group: 'SCM'
+tags:
+  - Source Control
 ---
+
+# Gitlab Overview
 
 GitLab is a popular open-source platform for hosting and managing Git repositories. It provides features such as code review, issue tracking, and pull requests, which help streamline the development process and ensure code quality.
 

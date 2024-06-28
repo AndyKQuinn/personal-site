@@ -1,14 +1,10 @@
 ---
-title: Security Scans
 tags:
   - Security
   - Vulnerabilities
-type: Technical
-parent: Security
-personas:
-  - Engineers
-  - Developers
 ---
+
+# Security Scans
 
 Security scans are a critical component of CI/CD pipelines. They help identify vulnerabilities and weaknesses in software applications and infrastructure, allowing for timely remediation and prevention of potential security breaches.
 

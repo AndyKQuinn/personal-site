@@ -1,9 +1,9 @@
 ---
-title: Product Ownership
 tags:
-  - DORA
-group: 'Agile'
+  - Agile
 ---
+
+# Product Ownership
 
 Product ownership is a key concept in agile software development. It refers to the process of identifying and managing the ownership of a product, including its features, functionality, and requirements. This involves defining the product's vision, goals, and objectives, as well as identifying the stakeholders and their roles and responsibilities.
 

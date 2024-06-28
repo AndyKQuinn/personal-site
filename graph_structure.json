@@ -1,0 +1,91 @@
+{
+  "nodes": [
+    {
+      "id": "Build A Static Site",
+      "href": "/docs/capabilities/fast-feedback",
+      "group": 1
+    },
+    {
+      "id": "Some Awesome Thing",
+      "href": "/docs/capabilities/fast-flow",
+      "group": 1
+    },
+    {
+      "id": "Some Other Thing",
+      "href": "/docs/capabilities/learning-climate",
+      "group": 1
+    },
+    {
+      "id": "Product Ownership",
+      "href": "/docs/catalog/agile/product-ownership",
+      "group": 2
+    },
+    {
+      "id": "Story Estimation",
+      "href": "/docs/catalog/agile/story-estimation",
+      "group": 2
+    },
+    {
+      "id": "Build A Docker Image",
+      "href": "/docs/catalog/ci_cd/build-image",
+      "group": 3
+    },
+    {
+      "id": "Deploy An Image",
+      "href": "/docs/catalog/ci_cd/deploy-image",
+      "group": 3
+    },
+    {
+      "id": "Security Scans",
+      "href": "/docs/catalog/ci_cd/security-scans",
+      "group": 3
+    },
+    {
+      "id": "Quality Documentation",
+      "href": "/docs/catalog/documentation/good-docs",
+      "group": 4
+    },
+    {
+      "id": "Gitlab Overview",
+      "href": "/docs/catalog/source-control/gitlab",
+      "group": 5
+    },
+    {
+      "id": "Source Control Management (Scm)",
+      "href": "/docs/catalog/source-control/scm",
+      "group": 5
+    },
+    {
+      "id": "Introduction",
+      "href": "/docs/intro",
+      "group": 6
+    }
+  ],
+  "links": [
+    {
+      "source": "Build A Static Site",
+      "target": "Some Awesome Thing",
+      "value": 1
+    },
+    {
+      "source": "Build A Static Site",
+      "target": "Some Other Thing",
+      "value": 1
+    },
+    {
+      "source": "Some Awesome Thing",
+      "target": "Some Other Thing",
+      "value": 1
+    },
+    {
+      "source": "Product Ownership",
+      "target": "Story Estimation",
+      "value": 1
+    },
+    {
+      "source": "Build A Docker Image",
+      "target": "Deploy An Image",
+      "value": 2
+    }
+  ]
+}
