@@ -49,7 +49,7 @@ export default function ForceGraphWithEffects() {
 
         return (
           <Layout>
-            <>
+            <div onTouchStart={handleTouchStart}>
               <Menu
                 anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
@@ -77,7 +77,7 @@ export default function ForceGraphWithEffects() {
                   </Box>
                 )}
               </Menu>
-            </>
+            </div>
             <ForceGraph3D
               graphData={graphData}
               nodeAutoColorBy="group"
