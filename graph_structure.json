@@ -1,91 +1,156 @@
 {
   "nodes": [
     {
-      "id": "Build A Static Site",
-      "href": "/docs/capabilities/fast-feedback",
-      "group": 1
+      "id": "Skills",
+      "href": "/skills",
+      "group": "Skills Directory"
     },
     {
-      "id": "Some Awesome Thing",
-      "href": "/docs/capabilities/fast-flow",
-      "group": 1
+      "id": "Capabilities",
+      "href": "/capabilities",
+      "group": "Technology"
     },
     {
-      "id": "Some Other Thing",
-      "href": "/docs/capabilities/learning-climate",
-      "group": 1
+      "id": "Api Development",
+      "href": "/docs/capabilities/api-development",
+      "group": "Document"
     },
     {
-      "id": "Product Ownership",
-      "href": "/docs/catalog/agile/product-ownership",
-      "group": 2
+      "id": "Golang",
+      "href": "#golang",
+      "group": "Tag"
     },
     {
-      "id": "Story Estimation",
-      "href": "/docs/catalog/agile/story-estimation",
-      "group": 2
+      "id": "Ui Development",
+      "href": "/docs/capabilities/ui-development",
+      "group": "Document"
     },
     {
-      "id": "Build A Docker Image",
-      "href": "/docs/catalog/ci_cd/build-image",
-      "group": 3
+      "id": "Javascript",
+      "href": "#javascript",
+      "group": "Tag"
     },
     {
-      "id": "Deploy An Image",
-      "href": "/docs/catalog/ci_cd/deploy-image",
-      "group": 3
-    },
-    {
-      "id": "Security Scans",
-      "href": "/docs/catalog/ci_cd/security-scans",
-      "group": 3
-    },
-    {
-      "id": "Quality Documentation",
-      "href": "/docs/catalog/documentation/good-docs",
-      "group": 4
-    },
-    {
-      "id": "Gitlab Overview",
-      "href": "/docs/catalog/source-control/gitlab",
-      "group": 5
-    },
-    {
-      "id": "Source Control Management (Scm)",
-      "href": "/docs/catalog/source-control/scm",
-      "group": 5
+      "id": "User Experience (Ux) Development",
+      "href": "/docs/capabilities/ux-development",
+      "group": "Document"
     },
     {
       "id": "Introduction",
       "href": "/docs/intro",
-      "group": 6
+      "group": "Document"
+    },
+    {
+      "id": "Fiber",
+      "href": "/docs/skills/golang/fiber",
+      "group": "Document"
+    },
+    {
+      "id": "Create T3 App",
+      "href": "/docs/skills/javascript/ct3a",
+      "group": "Document"
+    },
+    {
+      "id": "Next",
+      "href": "/docs/skills/javascript/next",
+      "group": "Document"
+    },
+    {
+      "id": "Python",
+      "href": "/python",
+      "group": "Technology"
+    },
+    {
+      "id": "Django",
+      "href": "/docs/skills/python/django",
+      "group": "Document"
+    },
+    {
+      "id": "Fastapi",
+      "href": "/docs/skills/python/fastapi",
+      "group": "Document"
     }
   ],
   "links": [
     {
-      "source": "Build A Static Site",
-      "target": "Some Awesome Thing",
+      "source": "Capabilities",
+      "target": "Skills",
       "value": 1
     },
     {
-      "source": "Build A Static Site",
-      "target": "Some Other Thing",
+      "source": "Api Development",
+      "target": "Capabilities",
       "value": 1
     },
     {
-      "source": "Some Awesome Thing",
-      "target": "Some Other Thing",
+      "source": "Api Development",
+      "target": "Golang",
       "value": 1
     },
     {
-      "source": "Product Ownership",
-      "target": "Story Estimation",
+      "source": "Ui Development",
+      "target": "Capabilities",
       "value": 1
     },
     {
-      "source": "Build A Docker Image",
-      "target": "Deploy An Image",
-      "value": 2
+      "source": "Ui Development",
+      "target": "Javascript",
+      "value": 1
+    },
+    {
+      "source": "User Experience (Ux) Development",
+      "target": "Capabilities",
+      "value": 1
+    },
+    {
+      "source": "Introduction",
+      "target": "Skills",
+      "value": 1
+    },
+    {
+      "source": "Skills",
+      "target": "Skills",
+      "value": 1
+    },
+    {
+      "source": "Golang",
+      "target": "Skills",
+      "value": 1
+    },
+    {
+      "source": "Fiber",
+      "target": "Golang",
+      "value": 1
+    },
+    {
+      "source": "Javascript",
+      "target": "Skills",
+      "value": 1
+    },
+    {
+      "source": "Create T3 App",
+      "target": "Javascript",
+      "value": 1
+    },
+    {
+      "source": "Next",
+      "target": "Javascript",
+      "value": 1
+    },
+    {
+      "source": "Python",
+      "target": "Skills",
+      "value": 1
+    },
+    {
+      "source": "Django",
+      "target": "Python",
+      "value": 1
+    },
+    {
+      "source": "Fastapi",
+      "target": "Python",
+      "value": 1
     }
   ]
 }

@@ -1,0 +1,6 @@
+---
+tags:
+  - Python
+---
+
+# FastAPI

@@ -1,127 +1,89 @@
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
-const marked = require('marked');
 
-const docsDir = path.join(__dirname, 'docs');
-
-// Define a color mapping for tags and titles
-const colorMap = {
-  'lightblue': ['title'],
-  'pink': ['tag1', 'tag4'],
-  'lightgreen': ['tag2', 'tag5'],
-  'purple': ['tag3'],
-  'default': ['lightgray'] // Default color for tags not explicitly listed
-};
-
-const groupMap = {
-  'CI/CD': 'diamonds',
-  'group2': 'dotsWithLabel',
-  'group3': 'mints',
-  'group4': 'icons',
-  'default': 'icons' // Default group for values not explicitly listed
-};
-
-function getColorForTag(tag) {
-  for (const color in colorMap) {
-    if (colorMap[color].includes(tag)) {
-      return color;
-    }
-  }
-  return colorMap['default'][0];
+function extractTitleAndTags(filePath) {
+  const content = fs.readFileSync(filePath, 'utf8');
+  const parsed = matter(content);
+  const title = parsed.data.title || parsed.content.match(/^# (.+)/m)[1];
+  const tags = parsed.data.tags || [];
+  const routeName = path.relative(__dirname, filePath).replace(/\\/g, '/').replace('.md', '');
+  return { title, tags, routeName };
 }
 
-function getMarkdownFiles(dir) {
-  let files = fs.readdirSync(dir);
-  let markdownFiles = [];
-
-  files.forEach((file) => {
-    let fullPath = path.join(dir, file);
-    if (fs.statSync(fullPath).isDirectory()) {
-      markdownFiles = markdownFiles.concat(getMarkdownFiles(fullPath));
-    } else if (path.extname(fullPath) === '.md') {
-      markdownFiles.push(fullPath);
-    }
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function(txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
-
-  return markdownFiles;
 }
 
-function getGroupForValue(group) {
-  return groupMap[group] || groupMap['default'];
-}
+function createGraphStructure(docsPath) {
+  const nodes = [];
+  const links = [];
+  const tagToNodes = {};
+  const nodeExists = new Set(); // Keep track of existing node IDs to prevent duplication
 
-function parseMarkdownFiles(files) {
-  let parsedFiles = [];
+  function traverseDirectory(directory, parent) {
+    const files = fs.readdirSync(directory);
 
-  files.forEach((file) => {
-    let content = fs.readFileSync(file, 'utf8');
-    let parsed = matter(content);
+    files.forEach(file => {
+      const fullPath = path.join(directory, file);
+      const stat = fs.statSync(fullPath);
 
-    let title = parsed.data && parsed.data.title ? parsed.data.title : '';
-    if (!title) {
-      const tokens = marked.lexer(content);
-      const headingToken = tokens.find((token) => token.type === 'heading' && token.depth === 1);
-      title = headingToken ? headingToken.text : 'Untitled';
-    }
+      if (stat.isDirectory()) {
+        const dirName = toTitleCase(file);
+        if (!nodeExists.has(dirName)) {
+          nodes.push({ id: dirName, href: `/${file.toLowerCase()}`, group: 'Technology' });
+          nodeExists.add(dirName);
+        }
+        if (parent && !links.some(link => link.source === dirName && link.target === parent)) {
+          links.push({ source: dirName, target: parent, value: 1 }); // Ensure unique link
+        }
+        traverseDirectory(fullPath, dirName);
+      } else if (file.endsWith('.md')) {
+        const { title, tags, routeName } = extractTitleAndTags(fullPath);
+        const formattedTitle = toTitleCase(title);
 
-    const relativePath = path.relative(__dirname, file).replace(/\\/g, '/').replace(/\.md$/, '');
-    const group = parsed.data.group ? getGroupForValue(parsed.data.group) : getGroupForValue('default');
+        if (!nodeExists.has(formattedTitle)) {
+          nodes.push({ id: formattedTitle, href: `/${routeName}`, group: 'Document' });
+          nodeExists.add(formattedTitle);
+        }
 
-    parsedFiles.push({
-      title: title,
-      tags: parsed.data.tags || [],
-      url: `/${relativePath}`,
-      group: group
-    });
-  });
+        tags.forEach(tag => {
+          const tagNode = toTitleCase(tag);
+          if (!nodeExists.has(tagNode)) {
+            nodes.push({ id: tagNode, href: `#${tag.toLowerCase()}`, group: 'Tag' });
+            nodeExists.add(tagNode);
+          }
+          if (!links.some(link => link.source === formattedTitle && link.target === tagNode)) {
+            links.push({ source: formattedTitle, target: tagNode, value: 1 });
+          }
+        });
 
-  return parsedFiles;
-}
-
-function generateGraphData() {
-  const markdownFiles = getMarkdownFiles(docsDir);
-  const parsedFiles = parseMarkdownFiles(markdownFiles);
-
-  let nodes = [];
-  let edges = [];
-  let nodeId = 1;
-
-  let titleNodeMap = new Map();
-  let tagNodeMap = new Map();
-
-  parsedFiles.forEach((file) => {
-    const titleColor = getColorForTag('title');
-    const titleNode = { id: nodeId, label: file.title, title: file.title, url: file.url, color: { background: titleColor } };
-    nodes.push(titleNode);
-    titleNodeMap.set(file.title, nodeId);
-    nodeId++;
-
-    file.tags.forEach((tag) => {
-      if (!tagNodeMap.has(tag)) {
-        const tagColor = getColorForTag(tag);
-        const tagNode = { id: nodeId, label: tag, title: tag, color: { background: tagColor } };
-        nodes.push(tagNode);
-        tagNodeMap.set(tag, nodeId);
-        nodeId++;
+        if (tags.length === 0 && parent) {
+          if (!links.some(link => link.source === formattedTitle && link.target === parent)) {
+            links.push({ source: formattedTitle, target: parent, value: 1 });
+          }
+        }
       }
-      const edgeColor = getColorForTag(tag);
-      edges.push({ from: titleNode.id, to: tagNodeMap.get(tag), color: { color: edgeColor } });
     });
-  });
+  }
 
-  return { nodes, edges };
+  // Add a root node if there are subdirectories indicating a skills directory
+  if (!nodeExists.has('Skills')) {
+    nodes.push({ id: 'Skills', href: '/skills', group: 'Skills Directory' });
+    nodeExists.add('Skills');
+  }
+
+  traverseDirectory(docsPath, 'Skills');
+
+  return { nodes, links };
 }
 
-function generateJSON() {
-  const graphData = generateGraphData();
-
-  fs.writeFileSync(
-    path.join(__dirname, 'graphData.json'),
-    JSON.stringify(graphData, null, 2)
-  );
-
-  console.log('Graph JSON file has been generated.');
+function main() {
+  const docsPath = path.join(__dirname, 'docs');
+  const graphStructure = createGraphStructure(docsPath);
+  fs.writeFileSync('graph_structure.json', JSON.stringify(graphStructure, null, 2));
 }
 
-generateJSON();
+main();
