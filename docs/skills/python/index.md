@@ -1,0 +1,3 @@
+# Python
+
+I teach it and use it somewhat, but prefer JavaScript or Golang personally. Might just be because I was exposed to them first though...

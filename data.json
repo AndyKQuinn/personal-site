@@ -1,0 +1,156 @@
+{
+  "nodes": [
+    {
+      "id": "Api Development",
+      "href": "/docs/concepts/api-development",
+      "group": 1,
+      "description": "I have built and supported many production-ready APIs built with Golang, NodeJS, Python and more."
+    },
+    {
+      "id": "Concepts",
+      "href": "#concepts",
+      "group": 2
+    },
+    {
+      "id": "Golang",
+      "href": "#golang",
+      "group": 2
+    },
+    {
+      "id": "Python",
+      "href": "#python",
+      "group": 2
+    },
+    {
+      "id": "Ui Development",
+      "href": "/docs/concepts/ui-development",
+      "group": 1,
+      "description": "I focus most of my time using JavaScript via the Next.js framework, but also through Node and other variants."
+    },
+    {
+      "id": "Javascript",
+      "href": "#javascript",
+      "group": 2
+    },
+    {
+      "id": "User Experience (Ux) Development",
+      "href": "/docs/concepts/ux-development",
+      "group": 1,
+      "description": "I am currently working towards a specialization in Usability (UX) and UI Design."
+    },
+    {
+      "id": "Usability Testing",
+      "href": "#usability testing",
+      "group": 2
+    },
+    {
+      "id": "Introduction",
+      "href": "/docs/intro",
+      "group": 0,
+      "description": "Welcome to my skills map. I was fascinated by the [react-force-graph](https://github.com/vasturiano/react-force-graph) library\nand wanted to explore how I can use it for something interested for my profile."
+    },
+    {
+      "id": "Fiber",
+      "href": "/docs/skills/golang/fiber",
+      "group": 4,
+      "description": "I have built a couple of basic Go Fiber APIs, mostly for training and tinkering purposes though. My\nexperience is fairly limited, but my first impressions of it was very positive and would absolutely use\nit in a future project."
+    },
+    {
+      "id": "Create T3 App",
+      "href": "/docs/skills/javascript/ct3a",
+      "group": 5,
+      "description": "I was told about CT3A via former Twitch dev Theo, and honestly, C3TA is pretty awesome. It is overwhelming\nat first, but what it provides is a wonderful boilerplate to begin projects from. If you're new to JS it may\nbe too heavy to absorb, but once you're over the initial hump, I found it to be quite enjoyable overall."
+    },
+    {
+      "id": "Docusaurus",
+      "href": "/docs/skills/javascript/docusaurus",
+      "group": 5,
+      "description": "It's probably the best dang static site generator I've ever used...and I've used a lot!!!\n\nI am totally infatuated with Docusaurus. In fac, this website is built on it!\n\n😲"
+    },
+    {
+      "id": "Next",
+      "href": "/docs/skills/javascript/next",
+      "group": 5,
+      "description": "It basically replaced React and `create-react-app`, so I figured I may as well get used to it. Turns out, it's pretty\nsolid. App router is still not my favorite, but again - as JavaScript seems to do, I got worn down by the pains of it\nand eventually started to warm up to Next.js...\n\n...is this an abusive relationship? JavaScript - come on!!! GET BETTER! hah..."
+    },
+    {
+      "id": "Django",
+      "href": "/docs/skills/python/django",
+      "group": 6,
+      "description": "I basically did a Hello World exercise with Django and was impressed by the admin panel. Past that, it is Python. Not my fav...\n\n...but I'd totally code in Django again someday!"
+    },
+    {
+      "id": "Fastapi",
+      "href": "/docs/skills/python/fastapi",
+      "group": 6,
+      "description": "Like [Django](/docs/skills/python/fastapi.md), I only made a Hello World like app with it. It was great though! Very fast\nand easy to build within. Still, it is Python, and while Python is file, I favor Go for my backend work."
+    }
+  ],
+  "links": [
+    {
+      "source": "Api Development",
+      "target": "Concepts",
+      "value": 1
+    },
+    {
+      "source": "Api Development",
+      "target": "Golang",
+      "value": 1
+    },
+    {
+      "source": "Api Development",
+      "target": "Python",
+      "value": 1
+    },
+    {
+      "source": "Ui Development",
+      "target": "Concepts",
+      "value": 1
+    },
+    {
+      "source": "Ui Development",
+      "target": "Javascript",
+      "value": 1
+    },
+    {
+      "source": "User Experience (Ux) Development",
+      "target": "Concepts",
+      "value": 1
+    },
+    {
+      "source": "User Experience (Ux) Development",
+      "target": "Usability Testing",
+      "value": 1
+    },
+    {
+      "source": "Fiber",
+      "target": "Golang",
+      "value": 1
+    },
+    {
+      "source": "Create T3 App",
+      "target": "Javascript",
+      "value": 1
+    },
+    {
+      "source": "Docusaurus",
+      "target": "Javascript",
+      "value": 1
+    },
+    {
+      "source": "Next",
+      "target": "Javascript",
+      "value": 1
+    },
+    {
+      "source": "Django",
+      "target": "Python",
+      "value": 1
+    },
+    {
+      "source": "Fastapi",
+      "target": "Python",
+      "value": 1
+    }
+  ]
+}

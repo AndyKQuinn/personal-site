@@ -2,18 +2,20 @@ import { useRef, useState, useEffect } from "react"
 import {
   Box,
   Button,
-  Stack,
+  Card,
+  CardActions,
+  CardContent,
   Dialog,
   Divider,
   Menu,
   MenuItem,
+  Stack,
   Typography,
 } from "@mui/material"
 import { ForceGraph3D } from "react-force-graph"
-import graphData from "../../../graphData.json"
 import SpriteText from "three-spritetext"
 import Layout from "@theme/Layout"
-import graphingData from "../../../graph_structure.json"
+import graphData from "../../../data.json"
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js"
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js"
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js"
@@ -25,7 +27,7 @@ export default function Graph() {
 
   useEffect(() => {
     const bloomPass = new UnrealBloomPass()
-    bloomPass.strength = 4
+    bloomPass.strength = 3
     bloomPass.radius = 1
     bloomPass.threshold = 0
     fgRef.current.postProcessingComposer().addPass(bloomPass)
@@ -56,41 +58,40 @@ export default function Graph() {
 
   return (
     <Layout>
-      <Box
-        sx={{
-          zIndex: 100,
-          position: "absolute",
-          top: "-100px",
-          left: "10px",
-          backgroundColor: "white",
-        }}
-        style={{ position: "absolute", top: "-600px", left: "10px" }}
-      >
-        Box
-      </Box>
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleClose}
-        style={{ position: "absolute", top: "-600px", left: "10px" }}
+        sx={{ padding: 0 }}
+        style={{
+          position: "absolute",
+          top: "-600px",
+          left: "10px",
+          padding: 0,
+        }}
       >
         {selectedNode && (
-          <div>
-            <MenuItem disabled>
-              <Typography variant="h6">{selectedNode.id}</Typography>
-            </MenuItem>
-            <MenuItem component="a" href={selectedNode.href}>
-              View Document
-            </MenuItem>
-          </div>
+          <Box sx={{ width: 400 }}>
+            <CardContent>
+              <Stack gap={2}>
+                <Typography variant="h4">{selectedNode.id}</Typography>
+                <Typography>{selectedNode.description}</Typography>
+              </Stack>
+            </CardContent>
+            <CardActions>
+              <Button href={selectedNode.href}>View More</Button>
+            </CardActions>
+          </Box>
         )}
       </Menu>
       <ForceGraph3D
         ref={fgRef}
         backgroundColor="#000003"
-        graphData={graphingData}
+        graphData={graphData}
         nodeAutoColorBy="group"
         onNodeClick={handleNodeClick}
+        linkDirectionalParticles="value"
+        linkDirectionalParticleSpeed={(d) => d.value * 0.01}
         nodeThreeObject={(node) => {
           const sprite = new SpriteText(node.id)
           sprite.color = node.color

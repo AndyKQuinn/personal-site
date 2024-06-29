@@ -1,100 +1,113 @@
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
-const marked = require('marked');
 
-const docsDir = path.join(__dirname, 'docs');
+function extractData(filePath) {
+  const content = fs.readFileSync(filePath, 'utf8');
+  const parsed = matter(content);
+  const title = parsed.data.title || parsed.content.match(/^# (.+)/m)[1];
+  const tags = parsed.data.tags || [];
+  const description = extractAndSanitizeDescription(parsed.content);
 
-const colorMap = {
-  'title': 'lightblue',
-  'windows': 'yellow',
-  'linux': 'lightgreen',
-  'tag3': 'purple',
-  'default': 'orange'
-};
-
-function getMarkdownFiles(dir) {
-  let files = fs.readdirSync(dir);
-  let markdownFiles = [];
-
-  files.forEach((file) => {
-    let fullPath = path.join(dir, file);
-    if (fs.statSync(fullPath).isDirectory()) {
-      markdownFiles = markdownFiles.concat(getMarkdownFiles(fullPath));
-    } else if (path.extname(fullPath) === '.md') {
-      markdownFiles.push(fullPath);
-    }
-  });
-
-  return markdownFiles;
+  const routeName = path.relative(__dirname, filePath).replace(/\\/g, '/').replace('.md', '');
+  return { title, tags, routeName, description };
 }
 
-function parseMarkdownFiles(files) {
-  let parsedFiles = [];
+function extractAndSanitizeDescription(markdownText) {
+  const contentWithoutFrontMatter = markdownText.replace(/^\s*---[\s\S]+?---\s*/g, '');
 
-  files.forEach((file) => {
-    let content = fs.readFileSync(file, 'utf8');
-    let parsed = matter(content);
+  const h1Regex = /# (.*)([\s\S]*?)(##|$)/;
+  const match = contentWithoutFrontMatter.match(h1Regex);
 
-    let title = parsed.data && parsed.data.title ? parsed.data.title : '';
-    if (!title) {
-      const tokens = marked.lexer(content);
-      const headingToken = tokens.find((token) => token.type === 'heading' && token.depth === 1);
-      title = headingToken ? headingToken.text : 'Untitled';
-    }
+  if (!match) return null;
 
-    parsedFiles.push({
-      title: title,
-      tags: parsed.data.tags || [],
-    });
-  });
+  let description = (match[2] || '').trim();
 
-  return parsedFiles;
+  description = description.replace(/<[^>]*>/g, '');
+  description = description.replace(/[<>]/g, '');
+
+
+  return description;
 }
 
-function generateGraphData() {
-  const markdownFiles = getMarkdownFiles(docsDir);
-  const parsedFiles = parseMarkdownFiles(markdownFiles);
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function(txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
 
-  let nodes = [];
-  let edges = [];
-  let nodeId = 1;
+function createGraphStructure(docsPath) {
+  const nodes = [];
+  const links = [];
+  const nodeExists = new Set();
+  const folderToGroupIndex = {};
+  let nextGroupId = 0;
 
-  let titleNodeMap = new Map();
-  let tagNodeMap = new Map();
+  function ensureGroupIndex(folder) {
+    if (!folderToGroupIndex.hasOwnProperty(folder)) {
+      folderToGroupIndex[folder] = nextGroupId++;
+    }
+    return folderToGroupIndex[folder];
+  }
 
-  parsedFiles.forEach((file) => {
-    const titleColor = colorMap['title'] || colorMap['default'];
-    const titleNode = { id: nodeId, label: file.title, title: file.title, color: { background: titleColor } };
-    nodes.push(titleNode);
-    titleNodeMap.set(file.title, nodeId);
-    nodeId++;
+  function addNode(id, href, group, description) {
+    if (!nodeExists.has(id)) {
+      nodes.push({ id, href, group, description });
+      nodeExists.add(id);
+    }
+  }
 
-    file.tags.forEach((tag) => {
-      if (!tagNodeMap.has(tag)) {
-        const tagColor = colorMap[tag] || colorMap['default'];
-        const tagNode = { id: nodeId, label: tag, title: tag, color: { background: tagColor } };
-        nodes.push(tagNode);
-        tagNodeMap.set(tag, nodeId);
-        nodeId++;
+  function traverseDirectory(directory) {
+    const currentGroupIndex = ensureGroupIndex(directory);
+    const files = fs.readdirSync(directory);
+
+    files.forEach(file => {
+      const fullPath = path.join(directory, file);
+      const stat = fs.statSync(fullPath);
+
+      if (directory === docsPath && file.toLowerCase() === 'intro.md') {
+        // skip making link, but still create the node so I can get the description
+        const { title, tags, routeName, description } = extractData(fullPath);
+        const formattedTitle = toTitleCase(title);
+        addNode(formattedTitle, `/${routeName}`, currentGroupIndex, description);
+        return;
       }
-      const edgeColor = colorMap[tag] || colorMap['default'];
-      edges.push({ from: titleNode.id, to: tagNodeMap.get(tag), color: { color: edgeColor } });
+
+      if (stat.isDirectory()) {
+        traverseDirectory(fullPath);
+      } else if (file.endsWith('.md')) {
+        const { title, tags, routeName, description } = extractData(fullPath);
+        const formattedTitle = toTitleCase(title);
+
+        addNode(formattedTitle, `/${routeName}`, currentGroupIndex, description);
+
+        tags.forEach(tag => {
+          const tagNode = toTitleCase(tag);
+          const tagGroupIndex = ensureGroupIndex('tags');
+          addNode(tagNode, `#${tag.toLowerCase()}`, tagGroupIndex);
+          links.push({ source: formattedTitle, target: tagNode, value: 1 });
+        });
+
+        if (tags.length === 0) {
+          const parentFolderName = path.basename(directory);
+          const parentFolderTitle = toTitleCase(parentFolderName);
+          if (parentFolderTitle !== formattedTitle) {
+            links.push({ source: formattedTitle, target: parentFolderTitle, value: 1 });
+          }
+        }
+      }
     });
-  });
+  }
 
-  return { nodes, edges };
+  traverseDirectory(docsPath);
+
+  return { nodes, links };
 }
 
-function generateJSON() {
-  const graphData = generateGraphData();
-
-  fs.writeFileSync(
-    path.join(__dirname, 'graphData.json'),
-    JSON.stringify(graphData, null, 2)
-  );
-
-  console.log('Graph JSON file has been generated.');
+function main() {
+  const docsPath = path.join(__dirname, 'docs');
+  const graphStructure = createGraphStructure(docsPath);
+  fs.writeFileSync('data.json', JSON.stringify(graphStructure, null, 2));
 }
 
-generateJSON();
+main();
