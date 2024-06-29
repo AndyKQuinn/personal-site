@@ -58,7 +58,8 @@ export default function Graph() {
 
   return (
     <Layout>
-      <Menu
+      Thingy
+      {/* <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleClose}
@@ -98,7 +99,7 @@ export default function Graph() {
           sprite.textHeight = 8
           return sprite
         }}
-      />
+      /> */}
     </Layout>
   )
 }
