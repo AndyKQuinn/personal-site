@@ -8,18 +8,21 @@
     },
     {
       "id": "Concepts",
-      "href": "#concepts",
-      "group": 2
+      "href": "/docs/skills/concepts",
+      "group": 2,
+      "description": ""
     },
     {
       "id": "Golang",
-      "href": "#golang",
-      "group": 2
+      "href": "/docs/skills/golang",
+      "group": 2,
+      "description": "I love Go. It was my first love and it was fabulous. However, once I learned JS and got comfier with\nit, I started to really enjoy UI and UX more and I find JS frameworks more accommodating to design in\nfor those realms."
     },
     {
       "id": "Python",
-      "href": "#python",
-      "group": 2
+      "href": "/docs/skills/python",
+      "group": 2,
+      "description": "I teach it and use it somewhat, but prefer JavaScript or Golang personally. Might just be because I was exposed to them first though..."
     },
     {
       "id": "Ui Development",
@@ -29,8 +32,9 @@
     },
     {
       "id": "Javascript",
-      "href": "#javascript",
-      "group": 2
+      "href": "/docs/skills/javascript",
+      "group": 2,
+      "description": "My main framework. I both love and hate it equally, but I have ultimately grown to get used to the\npains of it and have started to use it regularly. I also want to make sure I get to code with my\nfriend and UI mentor, Tyler Tyssedal."
     },
     {
       "id": "User Experience (Ux) Development",
@@ -40,8 +44,9 @@
     },
     {
       "id": "Usability Testing",
-      "href": "#usability testing",
-      "group": 2
+      "href": "/docs/skills/usability testing",
+      "group": 2,
+      "description": ""
     },
     {
       "id": "Introduction",

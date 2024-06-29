@@ -26,7 +26,11 @@ import {
 export default function ForceGraphWithEffects() {
   const fgRef = useRef()
   const [selectedNode, setSelectedNode] = useState(null)
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>()
+  const [anchorEl, setAnchorEl] = useState(null)
+
+  const handleTouchStart = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleNodeClick = (node, event) => {
     setSelectedNode(node)
@@ -45,32 +49,35 @@ export default function ForceGraphWithEffects() {
 
         return (
           <Layout>
-            <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-              sx={{ padding: 0 }}
-              style={{
-                position: "absolute",
-                top: "-500px",
-                left: "10px",
-                padding: 0,
-              }}
-            >
-              {selectedNode && (
-                <Box sx={{ width: 400 }}>
-                  <CardContent>
-                    <Stack gap={2}>
-                      <Typography variant="h4">{selectedNode.id}</Typography>
-                      <Typography>{selectedNode.description}</Typography>
-                    </Stack>
-                  </CardContent>
-                  <CardActions>
-                    <Button href={selectedNode.href}>View More</Button>
-                  </CardActions>
-                </Box>
-              )}
-            </Menu>
+            <>
+              <Menu
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+                sx={{ padding: 0 }}
+                style={{
+                  position: "absolute",
+                  top: "-500px",
+                  left: "10px",
+                  padding: 0,
+                }}
+                onTouchStart={handleTouchStart}
+              >
+                {selectedNode && (
+                  <Box sx={{ width: 400 }}>
+                    <CardContent>
+                      <Stack gap={2}>
+                        <Typography variant="h4">{selectedNode.id}</Typography>
+                        <Typography>{selectedNode.description}</Typography>
+                      </Stack>
+                    </CardContent>
+                    <CardActions>
+                      <Button href={selectedNode.href}>View More</Button>
+                    </CardActions>
+                  </Box>
+                )}
+              </Menu>
+            </>
             <ForceGraph3D
               graphData={graphData}
               nodeAutoColorBy="group"

@@ -26,7 +26,6 @@ function extractAndSanitizeDescription(markdownText) {
   description = description.replace(/<[^>]*>/g, '');
   description = description.replace(/[<>]/g, '');
 
-
   return description;
 }
 
@@ -66,7 +65,6 @@ function createGraphStructure(docsPath) {
       const stat = fs.statSync(fullPath);
 
       if (directory === docsPath && file.toLowerCase() === 'intro.md') {
-        // skip making link, but still create the node so I can get the description
         const { title, tags, routeName, description } = extractData(fullPath);
         const formattedTitle = toTitleCase(title);
         addNode(formattedTitle, `/${routeName}`, currentGroupIndex, description);
@@ -78,13 +76,13 @@ function createGraphStructure(docsPath) {
       } else if (file.endsWith('.md')) {
         const { title, tags, routeName, description } = extractData(fullPath);
         const formattedTitle = toTitleCase(title);
-
         addNode(formattedTitle, `/${routeName}`, currentGroupIndex, description);
 
         tags.forEach(tag => {
           const tagNode = toTitleCase(tag);
           const tagGroupIndex = ensureGroupIndex('tags');
-          addNode(tagNode, `#${tag.toLowerCase()}`, tagGroupIndex);
+          const tagDescription = extractTagDescription(tag, docsPath);
+          addNode(tagNode, `/docs/skills/${tag.toLowerCase()}`, tagGroupIndex, tagDescription);
           links.push({ source: formattedTitle, target: tagNode, value: 1 });
         });
 
@@ -97,6 +95,15 @@ function createGraphStructure(docsPath) {
         }
       }
     });
+  }
+
+  function extractTagDescription(tag, basePath) {
+    const tagPath = path.join(basePath, 'skills', tag.toLowerCase(), 'index.md');
+    if (fs.existsSync(tagPath)) {
+      const content = fs.readFileSync(tagPath, 'utf8');
+      return extractAndSanitizeDescription(content);
+    }
+    return "";
   }
 
   traverseDirectory(docsPath);
