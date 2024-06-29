@@ -6,10 +6,10 @@ const config: Config = {
   title: "Andy Quinn",
   tagline: "Engineer ~ Developer ~ Cat Lover",
   favicon: "img/favicon.ico",
-  url: "https://your-docusaurus-site.example.com",
+  url: "https://andykquinn.vercel.app",
   baseUrl: "/",
-  organizationName: "facebook",
-  projectName: "personal-site",
+  organizationName: "humanehumaningllc",
+  projectName: "Andy Quinn Portfolio Site",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   i18n: {
