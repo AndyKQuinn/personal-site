@@ -12,59 +12,42 @@ import {
 type FeatureItem = {
   title: string
   image: any
-  description: JSX.Element
+  description: string
 }
 
 const FeatureList: FeatureItem[] = [
   {
     title: "Full Stack Developer",
     image: "/img/card-1.png",
-    description: (
-      <>
-        I come from a Windows and Unix server administration background and
-        self-taught myself how to code. I have experience with Golang,
-        JavaScript, Python and various other languages and frameworks.
-      </>
-    ),
+    description:
+      "I come from a Windows and Unix server administration background and self-taught myself how to code. I have experience with Golang, JavaScript, Python and various other languages and frameworks.",
   },
   {
     title: "Documentation Nerd",
     image: "/img/card-2.png",
-    description: (
-      <>
-        I am passionate about ensuring documentation is updated regularly, easy
-        to read and understand, and is updated as regualarly as the codebase
-        itself.
-        <div style={{ padding: 4 }} />I also am <b>obsessed</b> with{" "}
-        <span style={{ color: "purple" }}>Docusaurus</span>. 😍
-      </>
-    ),
+    description:
+      "I am passionate about ensuring documentation is updated regularly, easy to read and understand, and is updated as regualarly as the codebase itself.",
   },
   {
     title: "Usability Advocate",
     image: "/img/card-3.png",
-    description: (
-      <>
-        Users must be able to traverse your site with ease, and your users may
-        not always be able to see, hear or use your content. I am an A11Y and
-        usability advocate and will ensure your site is usable by all.
-      </>
-    ),
+    description:
+      "Users must be able to traverse your site with ease, and your users may not always be able to see, hear or use your content. I am an A11Y and usability advocate and will ensure your site is usable by all",
   },
 ]
 
 function Feature({ title, image, description }: FeatureItem) {
   return (
-    <Card elevation={8} sx={{ maxWidth: 345 }}>
+    <Card elevation={8}>
       <CardContent>
         <img src={image} alt={title} height="200" width="100%" />
+        <Stack justifyContent="center" p={2} gap={4}>
+          <Typography variant="h5" align="center">
+            {title}
+          </Typography>
+          <Typography align="center">{description}</Typography>
+        </Stack>
       </CardContent>
-      <Stack justifyContent="center" p={2} gap={4}>
-        <Typography variant="h5" align="center">
-          {title}
-        </Typography>
-        <Typography align="center">{description}</Typography>
-      </Stack>
     </Card>
   )
 }

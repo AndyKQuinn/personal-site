@@ -29,6 +29,7 @@
     "@mdx-js/react": "^3.0.0",
     "@mui/icons-material": "^5.15.20",
     "@mui/material": "^5.15.20",
+    "@react-three/drei": "^9.108.1",
     "@react-three/fiber": "^8.16.8",
     "@react-three/postprocessing": "^2.16.2",
     "clsx": "^2.0.0",

@@ -1,21 +1,20 @@
 import { useRef, useState, useEffect } from "react"
 import BrowserOnly from "@docusaurus/BrowserOnly"
-import ForceGraph3D from "react-force-graph-3d"
+// import ForceGraph3D from "react-force-graph-3d"
 import Layout from "@theme/Layout"
-import {
-  Bloom,
-  DepthOfField,
-  EffectComposer,
-  Noise,
-  Vignette,
-} from "@react-three/postprocessing"
+// import {
+//   Bloom,
+//   DepthOfField,
+//   EffectComposer,
+//   Noise,
+//   Vignette,
+// } from "@react-three/postprocessing"
 import { Canvas } from "@react-three/fiber"
 import graphData from "../../../data.json"
 import SpriteText from "three-spritetext"
 import {
   Box,
   Button,
-  Card,
   CardActions,
   CardContent,
   Menu,
@@ -28,11 +27,9 @@ export default function ForceGraphWithEffects() {
   const [selectedNode, setSelectedNode] = useState(null)
   const [anchorEl, setAnchorEl] = useState(null)
 
-  const handleTouchStart = (event) => {
-    setAnchorEl(event.currentTarget)
-  }
-
   const handleNodeClick = (node, event) => {
+    console.log("Node: ", node)
+    console.log("Event: ", event.target)
     setSelectedNode(node)
     setAnchorEl(event.target)
   }
@@ -49,22 +46,14 @@ export default function ForceGraphWithEffects() {
 
         return (
           <Layout>
-            <div onTouchStart={handleTouchStart}>
+            <div>
               <Menu
                 anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
-                sx={{ padding: 0 }}
-                style={{
-                  position: "absolute",
-                  top: "-500px",
-                  left: "10px",
-                  padding: 0,
-                }}
-                onTouchStart={handleTouchStart}
               >
                 {selectedNode && (
-                  <Box sx={{ width: 400 }}>
+                  <Box>
                     <CardContent>
                       <Stack gap={2}>
                         <Typography variant="h4">{selectedNode.id}</Typography>
@@ -89,14 +78,10 @@ export default function ForceGraphWithEffects() {
               nodeThreeObject={(node) => {
                 const sprite = new SpriteText(node.id)
                 sprite.color = node.color
-                sprite.textHeight = 8
+                sprite.textHeight = 12
                 return sprite
               }}
-            >
-              <EffectComposer>
-                <Bloom intensity={1.5} />
-              </EffectComposer>
-            </ForceGraph3D>
+            />
           </Layout>
         )
       }}
